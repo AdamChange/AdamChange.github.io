@@ -1,0 +1,282 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* 以上是reset的CSS */
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 27px;
+}
+
+p {
+    font-size: 20px;
+}
+
+.five-advantages:nth-child(even),
+.five-advantages:nth-child(even) .title {
+    flex-direction: row-reverse;
+}
+
+.five-advantages:nth-child(even) .text {
+    transform: translate(40%, 0%);
+}
+
+.five-advantages:nth-child(even) .minor-img {
+    transform: translate(-90%, 0%);
+}
+
+.five-advantages-path-contain {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.five-advantages {
+    margin: 100px 0;
+    position: relative;
+    display: flex;
+}
+
+.introduce {
+    max-width: 350px;
+    color: white;
+}
+
+.title {
+    width: 100%;
+    display: flex;
+    font-family: 'Quicksand', sans-serif;
+    background-color: rgb(188, 2, 2);
+    text-align: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+
+}
+
+.title span {
+    font-size: 150px;
+    display: inline-block;
+    writing-mode: vertical-lr;
+    line-height: .7;
+    font-weight: lighter;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.title h1 {
+    display: inline-block;
+    padding: 0 16px;
+    letter-spacing: 3px;
+}
+
+.title-text {
+    background-color: #000;
+    padding: 15px 20px;
+    line-height: 1.6;
+    z-index: 2;
+    position: relative;
+}
+
+.title-text p {
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
+.text {
+    margin-top: 500px;
+    padding: 10px 20px;
+    line-height: 1.5;
+    width: 680px;
+    background-color: rgb(241, 241, 241);
+    /* position: relative; */
+    /* right: 22%; */
+    transform: translate(-40%, 0%);
+    z-index: 2;
+
+}
+
+.text h2 {
+    font-size: 18px;
+    color: red;
+}
+
+.text h2::after {
+    content: '';
+    display: inline-block;
+    width: 70%;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #f00;
+}
+
+.text h3 {
+    color: white;
+    margin: 5px 0;
+    padding: 3px 5px;
+    width: fit-content;
+    background-color: #000;
+}
+
+.text p {
+    font-size: 16px;
+    color: #000;
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+.text p::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background-color: #f00;
+    vertical-align: middle;
+    transform: scale(.2);
+    margin-bottom: 5px;
+}
+
+.main-img {
+    position: absolute;
+    left: 18%;
+    top: 20%;
+    z-index: 1;
+}
+
+.minor-img {
+    background-color: rgb(241, 241, 241);
+    width: 440px;
+    height: 290px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    z-index: 0;
+}

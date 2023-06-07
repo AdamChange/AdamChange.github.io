@@ -130,6 +130,12 @@ table {
 }
 
 /* 以上是reset的CSS */
+*{
+    font-family: 'Noto Sans TC', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Quicksand', sans-serif;
+font-family: 'Roboto', sans-serif;
+}
 h1 {
     font-size: 50px;
 }
@@ -188,14 +194,12 @@ p {
     font-size: 150px;
     display: inline-block;
     writing-mode: vertical-lr;
-    line-height: .7;
-    font-weight: lighter;
-    font-family: 'Quicksand', sans-serif;
+    line-height: .78;
 }
 
 .title h1 {
     display: inline-block;
-    padding: 0 16px;
+    padding: 0 10px;
     letter-spacing: 3px;
 }
 

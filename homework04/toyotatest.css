@@ -160,7 +160,9 @@ p {
 }
 
 .five-advantages:nth-child(even) .minor-img {
-    transform: translate(-90%, 0%);
+    transform: translate(-10%, 0%);
+    width: 490px;
+    height: 380px;
 }
 
 .five-advantages-path-contain {
@@ -233,13 +235,16 @@ p {
 .text h2 {
     font-size: 18px;
     color: red;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    /* 第一列自動寬度，第二列填滿剩餘空間 */
 }
 
 .text h2::after {
     content: '';
     display: inline-block;
-    width: 70%;
-    margin-bottom: 5px;
+    width: 100%;
+    margin-bottom: 14px;
     border-bottom: 1px solid #f00;
 }
 
@@ -266,7 +271,7 @@ p {
     background-color: #f00;
     vertical-align: middle;
     transform: scale(.2);
-    margin-bottom: 5px;
+    margin-bottom: 7px;
 }
 
 .main-img {

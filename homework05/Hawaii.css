@@ -27,7 +27,7 @@ img {
 
 .container {
     margin: auto;
-    max-width: 1200px;
+    max-width: 1240px;
 }
 
 .item-title {
@@ -145,7 +145,7 @@ img {
         width: 50%;
     }
     .Secondary-card {
-        width: 43%;
+        width: 45%;
     }
     .main-card-text{
         gap: 10px;
@@ -156,5 +156,8 @@ img {
     }
     .item-list:nth-child(odd) .item{
         flex-direction: row-reverse;
+    }
+    .Secondary img {
+        height: 50%;
     }
 }

@@ -91,7 +91,7 @@ a:hover {
 
 .Secondary-card {
     /* width: 46%; */
-    padding: 5px 5px 0px;
+    padding: 10px;
 }
 
 .Secondary-card a {
@@ -147,6 +147,7 @@ a:hover {
     }
 
     .main-card {
+        padding: 5px;
         /* width: 50%; */
     }
 

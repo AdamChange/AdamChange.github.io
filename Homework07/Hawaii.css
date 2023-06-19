@@ -1,0 +1,178 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: YakuHanJP, "游ゴシック Medium", YuGothic, YuGothicM, "Noto Sans Japanese", sans-serif;
+}
+
+p {
+    font-size: 11px;
+}
+
+a {
+    text-decoration: none;
+    color: #222222;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+
+.main-group {
+    margin-top: 20px;
+}
+
+
+.container {
+    margin: auto;
+    max-width: 1240px;
+}
+
+.item-title {
+    /* width: 100%; */
+    margin: 20px 10px;
+    padding-top: 5px;
+    border-top: 2px solid #202124;
+    font-weight: 600;
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin: 10px 10px 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.title h1 {
+    font-size: 18px;
+}
+
+.title p {
+    color: #6c6d6e;
+    letter-spacing: -1px;
+    font-size: 14px;
+}
+
+
+.title-link p {
+    color: #f65936;
+}
+
+.Secondary {
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 100%; */
+    justify-content: space-evenly;
+}
+
+.main-card a {
+    transition: .5s;
+}
+
+.main-card-text {
+    padding: 10px;
+}
+
+.main-card-text div {
+    padding-top: 10px;
+}
+
+.main-card-text h1 {
+    font-size: 18px;
+}
+
+.Secondary img {
+    aspect-ratio : 3 / 2 ;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.Secondary-card {
+    /* width: 46%; */
+    padding: 5px 5px 0px;
+}
+
+.Secondary-card a {
+    transition: .8s;
+}
+
+.icon-title {
+    font-size: 12px;
+    padding: 5px 0;
+    overflow: hidden;
+}
+
+.icon-title span {
+    white-space: nowrap;
+
+}
+
+.Secondary-card-text {
+    float: left;
+    /* width: 100%; */
+    font-size: 10px;
+    font-weight: 100;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.text-date {
+    letter-spacing: -.1em;
+    padding-top: 10px;
+    font-size: 8px;
+}
+
+@media screen and (min-width:768px) {
+    .item-title p {
+        font-weight: 200;
+        font-size: 24px;
+    }
+
+    .title-text {
+        align-items: flex-end;
+        display: flex;
+    }
+
+    .title-text h1 {
+        display: inline;
+        font-size: 24px;
+        padding: 10px 15px 0 0;
+    }
+
+    .item {
+        margin: 0 10px;
+        display: flex;
+    }
+
+    .main-card {
+        /* width: 50%; */
+    }
+
+    .main-card img {
+        border-radius: 10px;
+    }
+
+    .Secondary {
+        /* width: 50%; */
+    }
+
+    .Secondary-card {
+        /* width: 45%; */
+    }
+
+    .main-card-text {
+        gap: 10px;
+        display: flex;
+    }
+
+    .main-card-text div {
+        /* width: 50%; */
+    }
+
+    .item-list:nth-child(odd) .item {
+        flex-direction: row-reverse;
+    }
+
+}

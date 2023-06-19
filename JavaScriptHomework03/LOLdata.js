@@ -44,7 +44,7 @@ window.onload = function () {
         document.querySelector("#container").innerHTML = "";
         heroArray.forEach(x => {
             // container.append(`${x.id},${x.name},${x.pic_src}`)
-            container.innerHTML += '<br>' + JSON.stringify(x)
+            container.innerHTML += JSON.stringify(x)+ '<br>'
         })
         alert("以文字迭代英雄人物資料！");
 

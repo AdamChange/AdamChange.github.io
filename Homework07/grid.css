@@ -20,7 +20,7 @@ img {
 .container {
     max-width: 1200px;
     margin: auto;
-    padding: calc(var(--col-gap));
+    /* padding: calc(var(--col-gap)); */
 }
 
 .row {
@@ -31,7 +31,7 @@ img {
 
 [class*="col-"] {
     box-sizing: border-box;
-    padding: var(--col-gap);
+    /* padding: var(--col-gap); */
 }
 
 .text {

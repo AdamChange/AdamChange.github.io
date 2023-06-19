@@ -12,8 +12,9 @@ a {
     text-decoration: none;
     color: #222222;
 }
-a:hover{
-    opacity:0.8;
+
+a:hover {
+    opacity: 0.8;
 }
 
 img {
@@ -50,6 +51,7 @@ img {
 .title h1 {
     font-size: 18px;
 }
+
 .title p {
     color: #6c6d6e;
     letter-spacing: -1px;
@@ -67,21 +69,25 @@ img {
     width: 100%;
     justify-content: space-evenly;
 }
-.main-card a{
+
+.main-card a {
     transition: .5s;
 }
-.main-card-text{
+
+.main-card-text {
     padding: 10px;
 }
-.main-card-text div{
+
+.main-card-text div {
     padding-top: 10px;
 }
-.main-card-text h1{
+
+.main-card-text h1 {
     font-size: 18px;
 }
 
 .Secondary img {
-    height: 35%;
+    aspect-ratio : 3 / 2 ;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -89,18 +95,22 @@ img {
 .Secondary-card {
     width: 46%;
 }
-.Secondary-card a{
+
+.Secondary-card a {
     transition: .8s;
 }
-.icon-title{
+
+.icon-title {
     font-size: 12px;
     padding: 5px 0;
     overflow: hidden;
 }
-.icon-title span{
+
+.icon-title span {
     white-space: nowrap;
-    
+
 }
+
 .Secondary-card-text {
     float: left;
     width: 100%;
@@ -110,54 +120,61 @@ img {
     margin-bottom: 12px;
 }
 
-.text-date{
+.text-date {
     letter-spacing: -.1em;
     padding-top: 10px;
     font-size: 8px;
 }
 
 @media screen and (min-width:768px) {
-    .item-title p{
+    .item-title p {
         font-weight: 200;
         font-size: 24px;
     }
-    .title-text{
+
+    .title-text {
         align-items: flex-end;
         display: flex;
     }
-    .title-text h1{
+
+    .title-text h1 {
         display: inline;
         font-size: 24px;
-        padding:10px 15px 0 0;
+        padding: 10px 15px 0 0;
     }
-    .item{
+
+    .item {
         margin: 0 10px;
         display: flex;
     }
-    .main-card{
+
+    .main-card {
         width: 50%;
     }
-    .main-card img{
+
+    .main-card img {
         border-radius: 10px;
     }
-    
-    .Secondary{
+
+    .Secondary {
         width: 50%;
     }
+
     .Secondary-card {
         width: 45%;
     }
-    .main-card-text{
+
+    .main-card-text {
         gap: 10px;
         display: flex;
     }
-    .main-card-text div{
+
+    .main-card-text div {
         width: 50%;
     }
-    .item-list:nth-child(odd) .item{
+
+    .item-list:nth-child(odd) .item {
         flex-direction: row-reverse;
     }
-    .Secondary img {
-        height: 50%;
-    }
+
 }

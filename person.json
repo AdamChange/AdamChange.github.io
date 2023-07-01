@@ -1,0 +1,14 @@
+{
+    "firstname":"Adam",
+    "gender":true,
+    "height":159,
+    "email":"godwhitegame@gmail.com",
+    "city":{
+        "通訊地址":"新北",
+        "戶籍地址":"新北"
+    },
+    "phone":{
+        "行動電話":"0966727767"
+    },
+    "car":["BMW","Nissan"]
+}

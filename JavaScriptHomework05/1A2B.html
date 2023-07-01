@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        .container {
+            max-width: 500px;
+        }
+
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button {
+            width: 100px;
+            margin: 20px;
+        }
+
+        input {
+            width: 150px;
+            margin: 20px;
+        }
+
+        .btnbox {
+            /* background-color: #fa0; */
+        }
+
+        textarea {
+            width: 200px;
+            height: 80%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="title m-auto">
+                <h1>1A2B</h1>
+            </div>
+        </div>
+        <div class="row py-2">
+            <div class="box btnbox w-50">
+                <button class="btnstart" id="start">開始</button>
+                <button class="btncheck" id="check" disabled="true">檢查</button>
+                <button class="btnanswer" id="answer" disabled="true">看答案</button>
+                <button class="btnrestart" id="restart" disabled="true">重新開始</button>
+                <input type="text" id="input" placeholder="請輸入四個數字" disabled="true">
+            </div>
+            <div class="box textbox w-50">
+                <textarea name="" id="history" cols="30" rows="10" readonly="value"></textarea>
+            </div>
+        </div>
+    </div>
+    <script>
+        let a, b, inputnum, round = 0;
+        let ansArr = []
+        let inputArr = []
+        let guessArr = []
+        const start = document.querySelector('#start');
+        const check = document.querySelector('#check');
+        const answer = document.querySelector('#answer');
+        const restart = document.querySelector('#restart');
+        const input = document.querySelector('#input');
+        const history = document.querySelector('#history');
+
+        window.onload = function () {
+            start.addEventListener("click", function () {
+                createAnsArr();
+                getStart();
+                numreset()
+                round = 0;
+            })
+
+            check.addEventListener("click", function () {
+                checkInput()
+            })
+            answer.addEventListener("click", function () {
+                alert(ansArr.join(''))
+
+            })
+            restart.addEventListener("click", function () {
+                reset();
+            })
+        }
+
+        function createAnsArr() {
+            ansArr = []
+            while (ansArr.length <= 3) {
+                let num = getRandomInt(0, 10)
+                if (ansArr.indexOf(num) == -1) {
+                    ansArr.push(num)
+                }
+            }
+        }
+        function checkInput() {
+            inputnum = input.value.trim();
+            for (let i = 0; i <= 3; i++) {
+                guessArr.push(parseInt(inputnum.substr(i, 1)));
+            }
+            //判斷輸入是否可轉化為數字的字串(即非數字以外的字串)或空值
+            if (isNaN(inputnum) || inputnum == '') {
+                alert('請輸入數字')
+                numreset()
+                return
+            }
+            //判斷是否輸入四個數字
+            if (inputnum.length !== 4) {
+                alert('請輸入四個數字')
+                numreset()
+                return
+            }
+            // let guessNum = parseInt(input.value.trim());
+            //判斷是否重複輸入相同數字
+            let guessArrIsRepeat = new Set(guessArr)
+            if (guessArrIsRepeat.size !== 4) {
+                alert('請輸入四個不一樣數字')
+                numreset()
+                return
+            }
+
+            //判斷幾A幾B
+            a = 0;
+            b = 0;
+            guessArr.forEach((num, index) => {
+                if (ansArr.indexOf(num) !== -1) {
+                    b++;
+                }
+                if (ansArr[index] == num) {
+                    a++;
+                    b--;
+                }
+            })
+            round++;
+            let historyStr = `第${round}回合:${a}A${b}B:${guessArr.join('')}\n`
+            historyinput(historyStr)
+            if (a == 4) {
+                alert(`恭喜答對了，答案是${guessArr.join('')}`)
+                reset()
+            }
+            numreset()
+        }
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+        }
+        function historyinput(historyStr) {
+            history.value += historyStr
+        }
+        function getStart() {
+            check.disabled = false;
+            answer.disabled = false;
+            restart.disabled = false;
+            input.disabled = false;
+            start.disabled = true
+        }
+        function numreset() {
+            inputnum = ''
+            guessArr = []
+            input.value = '';
+        }
+        function reset() {
+            check.disabled = true;
+            answer.disabled = true;
+            restart.disabled = true;
+            input.disabled = true;
+            start.disabled = false;
+            history.value = '';
+            input.value = '';
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -81,9 +81,13 @@
             initStatus()
         })
         //看答案
-        ansBtn.addEventListener('click', function () { appendAlert(`答案是${ansArray.join('')}`, 'secondary') })
+        ansBtn.addEventListener('click', function () { 
+            alertPlaceholder.innerHTML=''
+            appendAlert(`答案是${ansArray.join('')}`, 'secondary') 
+        })
         //檢查答案(猜)
         checkBtn.addEventListener('click', function () {
+            alertPlaceholder.innerHTML=''
             checkAnsFN()
         })
         inputData.addEventListener('keypress', function (event) {
@@ -138,6 +142,7 @@
             historyList.innerHTML=''
             historyData = ''
             inputData.value=''
+            alertPlaceholder.innerHTML=''
         }
 
         function getRandomInt(min, max) {

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="btn-group w-100 mt-3 gap-3">
+            <button class="btn btn-info" type="button" id="start">開始</button>
+            <button class="btn btn-info" type="button" id="restart">重新開始</button>
+            <button class="btn btn-info" type="button" id="answer">看答案</button>
+        </div>
+
+        <div id="liveAlertPlaceholder"></div>
+
+        <div class="history my-3">
+            <ul class="list-group" id="history">
+                <!-- 範例 -->
+                <!-- <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold"><span class="badge bg-primary rounded-pill mr-5">1</span>Subheading</div>
+                    </div>
+                </li> -->
+            </ul>
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">猜答案</span>
+            <input type="text" class="form-control" placeholder="請輸入四個不一樣的數字" aria-label="Username"
+                aria-describedby="basic-addon1" id="inputData">
+            <button type="button" class="btn btn-primary" id="checkAns">猜</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script>
+
+        //宣告
+        let ansArray = [];
+        let inputArray = [];
+
+        let countA = 0;
+        let countB = 0;
+
+        let historyData = '';
+
+        //DOM
+        const startBtn = document.getElementById('start')
+        const reStartBtn = document.getElementById('restart')
+        const ansBtn = document.getElementById('answer')
+        const checkBtn = document.getElementById('checkAns')
+
+        const inputData = document.getElementById('inputData')
+
+        const historyList = document.getElementById('history')
+
+        //addclickEvent
+        //開始遊戲
+        startBtn.addEventListener('click', function () {
+            //初始畫按鈕
+            startGameStatus()
+            //step1. 娶四個不重複的亂數並放入ansArray
+            while (ansArray.length !== 4) {
+                let randomNum = getRandomInt(0, 10)
+                if (!ansArray.includes(randomNum)) {
+                    ansArray.push(randomNum);
+                }
+            }
+
+
+            //step2. 
+        })
+        //重新遊戲
+        reStartBtn.addEventListener('click', function () {
+            initStatus()
+        })
+        //看答案
+        ansBtn.addEventListener('click', function () { appendAlert(`答案是${ansArray.join('')}`, 'secondary') })
+        //檢查答案(猜)
+        checkBtn.addEventListener('click', function () {
+            checkAnsFN()
+        })
+        inputData.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                checkAnsFN();
+            }
+        })
+
+        //alert start---
+        const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+        const appendAlert = (message, type) => {
+            const wrapper = document.createElement('div')
+            wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                `   <div>${message}</div>`,
+                '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                '</div>'
+            ].join('')
+            alertPlaceholder.append(wrapper)
+        }
+        // appendAlert('Nice, you triggered this alert message!', 'success')
+
+
+        window.onload = function () {
+            initStatus()
+        }
+        //Function
+        function initStatus() {
+            //開始遊藝 可以按
+            //重新開始 看答案 猜 不能按
+            //輸入欄位 不能輸入
+            reStartBtn.disabled = true;
+            ansBtn.disabled = true;
+            checkBtn.disabled = true;
+            inputData.disabled = true;
+            startBtn.disabled = false;
+            cleanDataFN()
+        }
+
+        function startGameStatus() {
+            //todo
+            reStartBtn.disabled = false;
+            ansBtn.disabled = false;
+            checkBtn.disabled = false;
+            inputData.disabled = false;
+            startBtn.disabled = true;
+            cleanDataFN()
+        }
+        function cleanDataFN(){
+            ansArray=[]
+            inputArray=[]
+            historyList.innerHTML=''
+            historyData = ''
+            inputData.value=''
+        }
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min);
+            // The maximum is exclusive and the minimum is inclusive
+        }
+        function checkAnsFN() {
+            countA = 0;
+            countB = 0;
+            //防呆
+            let inputValue = inputData.value;
+            //檢查
+            // console.log(typeof parseInt(inputValue));
+            // console.log(isNaN(parseInt(inputValue)));
+            let inputSet = new Set(inputValue)
+            //是否為四位數
+            //是否是數字
+            if (isNaN(parseInt(inputValue)) || inputSet.size !== 4) {
+                appendAlert(`輸入錯誤`, 'danger')
+                return
+            }
+
+            //確認A與B
+            inputArray = [...inputValue]
+
+            inputArray.forEach((num, index) => {
+                let itemNum = parseInt(num);
+                if (ansArray.includes(itemNum)) {
+                    if (ansArray[index] === itemNum) {
+                        countA++;
+                    }else{
+                        countB++;
+                    }
+                }
+            })
+            historyData+=
+            `
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold"><span class="badge bg-primary rounded-pill mr-5">${countA}A${countB}B</span>${inputArray.join('')}</div>
+                </div>
+            </li>
+            `
+            historyList.innerHTML = historyData
+            if(countA===4){
+                appendAlert(`答對了! 答案是${inputArray.join('')}`, 'success')
+            }
+            inputData.value=''
+        }
+
+
+    </script>
+</body>
+
+</html>

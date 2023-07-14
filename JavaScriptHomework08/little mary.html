@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        i {
+            font-size: 48px;
+        }
+
+        [box-id] {
+            /* width: 80px; */
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            transform: 0.3s;
+        }
+
+        [box-id].active {
+            border: solid 5px red;
+            box-shadow: 0 0 20px red;
+            transition: 0s;
+        }
+
+        #msg {
+            font-size: 36px;
+            text-align: center;
+        }
+
+        button {
+            width: 80px;
+            height: 40px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-1" box-id="1"></div>
+            <div class="col-1" box-id="2"></div>
+            <div class="col-1" box-id="3"></div>
+            <div class="col-1" box-id="4"></div>
+            <div class="col-1" box-id="5"></div>
+            <div class="col-1" box-id="6"></div>
+            <div class="col-1" box-id="7"></div>
+            <div class="col-1" box-id="8"></div>
+            <div class="col-1" box-id="9"></div>
+            <div class="col-1" box-id="10"></div>
+            <div class="col-1" box-id="11"></div>
+            <div class="col-1" box-id="12"></div>
+        </div>
+        <div class="row">
+            <div class="col-1" box-id="32"></div>
+            <div class="col-10"></div>
+            <div class="col-1" box-id="13"></div>
+        </div>
+        <div class="row">
+            <div class="col-1" box-id="31"></div>
+            <div class="col-10 justify-content-center d-flex">
+                <button class="">開始</button>
+            </div>
+            <div class="col-1" box-id="14"></div>
+        </div>
+        <div class="row">
+            <div class="col-1" box-id="30"></div>
+            <div class="col-10" id="msg"></div>
+            <div class="col-1" box-id="15"></div>
+        </div>
+        <div class="row">
+            <div class="col-1" box-id="29"></div>
+            <div class="col-10"></div>
+            <div class="col-1" box-id="16"></div>
+        </div>
+        <div class="row">
+            <div class="col-1" box-id="28"></div>
+            <div class="col-1" box-id="27"></div>
+            <div class="col-1" box-id="26"></div>
+            <div class="col-1" box-id="25"></div>
+            <div class="col-1" box-id="24"></div>
+            <div class="col-1" box-id="23"></div>
+            <div class="col-1" box-id="22"></div>
+            <div class="col-1" box-id="21"></div>
+            <div class="col-1" box-id="20"></div>
+            <div class="col-1" box-id="19"></div>
+            <div class="col-1" box-id="18"></div>
+            <div class="col-1" box-id="17"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script>
+        //格子資料
+        let brickData = [{
+
+
+            "id": "1",
+            "color": "black",
+            "icon": "fa-regular fa-sun",
+            "target": function () {
+                return "Sun"
+            }
+        }, {
+            "id": "2",
+            "color": "lightblue",
+            "icon": "fa-regular fa-snowflake",
+            "target": function () {
+                return "Snow"
+            }
+        }, {
+            "id": "3",
+            "color": "purple",
+            "icon": "fa-solid fa-skull-crossbones",
+            "target": function () {
+                return "Bones"
+            }
+        }, {
+            "id": "4",
+            "color": "red",
+            "icon": "fa-brands fa-apple",
+            "target": function () {
+                return "Apple"
+            }
+        }, {
+            "id": "5",
+            "color": "pink",
+            "icon": "fa-solid fa-heart",
+            "target": function () {
+                return "Love"
+            }
+        }, {
+            "id": "6",
+            "color": "DeepSkyBlue",
+            "icon": "fa-solid fa-music",
+            "target": function () {
+                return "Music"
+            }
+        }, {
+            "id": "7",
+            "color": "yellow",
+            "icon": "fa-solid fa-star",
+            "target": function () {
+                return "Star"
+            }
+        }, {
+            "id": "8",
+            "color": "yellow",
+            "icon": "fa-solid fa-bolt",
+            "target": function () {
+                return "Bolt"
+            }
+        }, {
+            "id": "9",
+            "color": "lightgreen",
+            "icon": "fa-solid fa-leaf",
+            "target": function () {
+                return "Leaf"
+            }
+        }, {
+            "id": "10",
+            "color": "green",
+            "icon": "fa-solid fa-tree",
+            "target": function () {
+                return "Tree"
+            }
+        }, {
+            "id": "11",
+            "color": "purple",
+            "icon": "fa-solid fa-moon",
+            "target": function () {
+                return "Moon"
+            }
+        }, {
+            "id": "12",
+            "color": "lightblue",
+            "icon": "fa-solid fa-cloud-rain",
+            "target": function () {
+                return "Rain"
+            }
+        }, {
+            "id": "13",
+            "color": "red",
+            "icon": "fa-solid fa-fire",
+            "target": function () {
+                return "Fire"
+            }
+        }, {
+            "id": "14",
+            "color": "yellow",
+            "icon": "fa-solid fa-bell",
+            "target": function () {
+                return "Bell"
+            }
+        }, {
+            "id": "15",
+            "color": "light",
+            "icon": "fa-regular fa-snowflake",
+            "target": function () {
+                return "Snow"
+            }
+        }, {
+            "id": "16",
+            "color": "lightblue",
+            "icon": "fa-solid fa-cloud",
+            "target": function () {
+                return "Cloud"
+            }
+        }, {
+            "id": "17",
+            "color": "black",
+            "icon": "fa-regular fa-sun",
+            "target": function () {
+                return "Sun"
+            }
+        }, {
+            "id": "18",
+            "color": "pink",
+            "icon": "fa-solid fa-heart",
+            "target": function () {
+                return "Love"
+            }
+        }, {
+            "id": "19",
+            "color": "purple",
+            "icon": "fa-solid fa-skull-crossbones",
+            "target": function () {
+                return "Bones"
+            }
+        }, {
+            "id": "20",
+            "color": "DeepSkyBlue",
+            "icon": "fa-solid fa-music",
+            "target": function () {
+                return "Music"
+            }
+        }, {
+            "id": "21",
+            "color": "DarkOrange",
+            "icon": "fa-solid fa-gift",
+            "target": function () {
+                return "Gift"
+            }
+        }, {
+            "id": "22",
+            "color": "yellow",
+            "icon": "fa-solid fa-star",
+            "target": function () {
+                return "Star"
+            }
+        }, {
+            "id": "23",
+            "color": "yellow",
+            "icon": "fa-solid fa-bolt",
+            "target": function () {
+                return "Bolt"
+            }
+        }, {
+            "id": "24",
+            "color": "red",
+            "icon": "fa-brands fa-apple",
+            "target": function () {
+                return "Apple"
+            }
+        }, {
+            "id": "25",
+            "color": "lightgreen",
+            "icon": "fa-solid fa-leaf",
+            "target": function () {
+                return "Leaf"
+            }
+        }, {
+            "id": "26",
+            "color": "purple",
+            "icon": "fa-solid fa-moon",
+            "target": function () {
+                return "Moon"
+            }
+        }, {
+            "id": "27",
+            "color": "yellow",
+            "icon": "fa-solid fa-bell",
+            "target": function () {
+                return "Bell"
+            }
+        }, {
+            "id": "28",
+            "color": "green",
+            "icon": "fa-solid fa-tree",
+            "target": function () {
+                return "Tree"
+            }
+        }, {
+            "id": "29",
+            "color": "lightblue",
+            "icon": "fa-solid fa-cloud-rain",
+            "target": function () {
+                return "Rain"
+            }
+        }, {
+            "id": "30",
+            "color": "DarkOrange",
+            "icon": "fa-solid fa-gift",
+            "target": function () {
+                return "Gift"
+            }
+        }, {
+            "id": "31",
+            "color": "red",
+            "icon": "fa-solid fa-fire",
+            "target": function () {
+                return "Fire"
+            }
+        }, {
+            "id": "32",
+            "color": "lightblue",
+            "icon": "fa-solid fa-cloud",
+            "target": function () {
+                return "Cloud"
+            }
+        }
+        ]
+        //宣告
+        let steps = 0;
+        let allSteps = 0;
+        let currentIndex = 0;
+        let speed = 0;
+
+        let bricks = document.querySelectorAll('[box-id]');
+        bricks = Array.from(bricks).sort((a, b) => {
+            return a.getAttributeNode('box-id').value - b.getAttributeNode('box-id').value
+        });
+        console.log(bricks);
+        bricks.forEach((x, index) => {
+            let id = index + 1;
+            let data = brickData.find(x => x.id == id)
+            let icon = document.createElement('i');
+            icon.setAttribute('class', data.icon);
+            icon.style.color = data.color
+            x.appendChild(icon);
+        })
+
+        //Start Button
+        document.querySelector('button').addEventListener('click', function () {
+            speed = 30;
+            let random = Math.floor(Math.random() * brickData.length) + 1;
+            steps = random + (3 * bricks.length);
+            allSteps = steps;
+            turnAround()
+        })
+        //FN
+        function turnAround() {
+            bricks[currentIndex].classList.remove('active');
+            currentIndex++;
+            if (currentIndex >= bricks.length) {
+                currentIndex = 0
+            }
+            bricks[currentIndex].classList.add('active')
+            steps--;
+
+            //一般版本
+            // if(steps>0){
+            //     setTimeout(turnAround,speed);
+            // }else{
+            //     //跑完了
+            //     let msgBox = document.getElementById('msg')
+            //     let val = brickData[target].target();
+            //     msgBox.innerText=`接下來30分鐘->${val}`
+            // }
+
+            //變速版本
+            if(steps>0){
+                setTimeout(turnAround,speed);
+                if(steps<Math.floor((allSteps/3))){
+                    speed+=7;
+                }
+            }else{
+                //跑完了
+                let msgBox = document.getElementById('msg')
+                let val = brickData[currentIndex].target();
+                msgBox.innerText=`恭喜抽到${val}`
+            }
+        }
+    </script>
+</body>
+
+</html>

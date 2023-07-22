@@ -77,27 +77,19 @@
         window.onload = function () {
             listWrap.innerHTML = ''
             renderList();
+            let data = getLocalStorage(key)
+            console.log(data);
         }
         //addEventListener
-        addDOM2.addEventListener('click', function () {
-            if(addDOM1.value!=''){
-                let obj = {
-                check: false,
-                content: addDOM1.value
-            }
-            let dataArray = [];
-            let data = getLocalStorage(key)
-            if (data == null) {
-                dataArray.push(obj)
-            } else {
-                dataArray = data
-                dataArray.push(obj)
-            }
-            setLocalStorage(key, dataArray);
-            addDOM1.value = '';
-            renderList()
+        addDOM1.addEventListener('keydown',function(event){
+            if(event.key=='Enter'){
+                addList()
             }
         })
+        addDOM2.addEventListener('click', function () {
+            addList()
+        })
+        
 
         //FN
         function renderList() {
@@ -122,6 +114,25 @@
                 });
                 listWrap.innerHTML = allStr;
                 addEvent()
+            }
+        }
+        function addList(){
+            if(addDOM1.value.trim()!=''){
+                let dataArray = [];
+                let obj = {
+                check: false,
+                content: addDOM1.value
+            }
+            let data = getLocalStorage(key)
+            if (data == null) {
+                dataArray.push(obj)
+            } else {
+                dataArray = data
+                dataArray.push(obj)
+            }
+            setLocalStorage(key, dataArray);
+            addDOM1.value = '';
+            renderList()
             }
         }
         function addEvent() {

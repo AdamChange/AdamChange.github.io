@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        .listbox button {
+            min-width: 75px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="input-group my-3">
+                <input type="text" class="form-control" placeholder="todo.." aria-label=""
+                    aria-describedby="button-addon1" id="add-addon1">
+                <button class="btn btn-primary" type="button" id="add-addon2">新增</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="listbox p-3" id="todolist">
+
+                <!-- 原始DIV -->
+                <div class="border d-flex p-4 align-items-center mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="Checkbox" >
+                        <label class="form-check-label" for="Checkbox"></label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control me-4" aria-describedby="basic-addon1" readonly id="input">
+                    </div>
+                    <button type="button" class="btn btn-warning me-1" id="edit-btn1">編輯</button>
+                    <button type="button" class="btn btn-success me-1 d-none" id="edit-btn2">保存</button>
+                    <button type="button" class="btn btn-danger me-1" id="edit-btn3">刪除</button>
+                </div>
+
+                <!-- 每個按鈕都有新增id${index} -->
+                <!-- <div class="border d-flex p-4 align-items-center mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="Checkbox-${index}"
+                            data-check-index="${index}">
+                        <label class="form-check-label" for="Checkbox-${index}"></label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="in form-control me-4" aria-describedby="basic-addon1" readonly
+                            id="input-${index}" value="${item.content}" data-input-index="${index}">
+                    </div>
+                    <button type="button" class="btn btn-warning me-1" id="edit-btn${index}"
+                        data-edit-index="${index}">編輯</button>
+                    <button type="button" class="btn btn-success me-1 d-none" id="save-btn${index}"
+                        data-save-index="${index}">保存</button>
+                    <button type="button" class="btn btn-danger me-1" id="del-btn${index}"
+                        data-delete-index="${index}">刪除</button>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script>
+        //宣告
+        let key = 'todolistdata';
+        //DOM
+        const addDOM1 = document.getElementById(`add-addon1`) //input
+        const addDOM2 = document.getElementById('add-addon2') //新增
+        const checkDOM = document.getElementById('Checkbox') //checkbox
+        const listWrap = document.getElementById('todolist') //list列表
+        //window.onload
+        window.onload = function () {
+            listWrap.innerHTML = ''
+            renderList();
+        }
+        //addEventListener
+        addDOM2.addEventListener('click', function () {
+            if(addDOM1.value!=''){
+                let obj = {
+                check: false,
+                content: addDOM1.value
+            }
+            let dataArray = [];
+            let data = getLocalStorage(key)
+            if (data == null) {
+                dataArray.push(obj)
+            } else {
+                dataArray = data
+                dataArray.push(obj)
+            }
+            setLocalStorage(key, dataArray);
+            addDOM1.value = '';
+            renderList()
+            }
+        })
+
+        //FN
+        function renderList() {
+            listWrap.innerHTML = ''
+            let data = getLocalStorage(key)
+            let allStr = "";
+            if (data != null) {
+                data.forEach((item, index) => {
+                    let str = `<div class="border d-flex p-4 align-items-center mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="Checkbox-${index}" data-check-index="${index}" ${item.check?"checked":""}>
+                        <label class="form-check-label" for="Checkbox-${index}"></label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="in form-control me-4" aria-describedby="basic-addon1" disabled="true" id="input-${index}" value="${item.content}" data-input-index="${index}">
+                    </div>
+                    <button type="button" class="edit-btn btn btn-warning me-1" id="edit-btn${index}" data-edit-index="${index}">編輯</button>
+                    <button type="button" class="save-btn btn btn-success me-1 d-none" id="save-btn${index}" data-save-index="${index}">保存</button>
+                    <button type="button" class="del-btn btn btn-danger me-1" id="del-btn${index}" data-delete-index="${index}">刪除</button>
+                </div>`
+                    allStr += str;
+                });
+                listWrap.innerHTML = allStr;
+                addEvent()
+            }
+        }
+        function addEvent() {
+            const deBtnGroup = document.querySelectorAll('.del-btn') //搜尋每個符合CLASS名稱
+            deBtnGroup.forEach(function (el) {
+                el.addEventListener('click', deleteFN)
+            }) //對每個抓到的新增click事件
+            const edBtnGroup = document.querySelectorAll('.edit-btn')
+            edBtnGroup.forEach(function (el) {
+                el.addEventListener('click', editFN)
+            })
+            const saBtnGroup = document.querySelectorAll('.save-btn')
+            saBtnGroup.forEach(function (el) {
+                el.addEventListener('click', saveFN)
+            })
+            const checkBtnGroup = document.querySelectorAll('.form-check-input')
+            checkBtnGroup.forEach(function (el) {
+                el.addEventListener('change', checkFN)
+            })
+            
+        }
+        // 刪除按鈕新增事件
+        function deleteFN(event) {
+            let index = event.target.getAttribute('data-delete-index')
+            let data = getLocalStorage(key)
+            data.splice(index,1)
+            setLocalStorage(key,data)
+            renderList()
+        }
+        // 編輯按鈕新增事件
+        function editFN(event){
+            let index = event.target.getAttribute('data-edit-index') //
+            event.target.classList.add("d-none")
+            const saveBtn = document.getElementById(`save-btn${index}`)
+            saveBtn.classList.remove('d-none');
+            document.getElementById(`input-${index}`).disabled=false;
+        }
+        //保存按鈕新增事件
+        function saveFN(event){
+            let data = getLocalStorage(key)
+            let index = event.target.getAttribute('data-save-index')
+            event.target.classList.add("d-none")
+            const editBtn = document.getElementById(`edit-btn${index}`)
+            editBtn.classList.remove('d-none');
+            const checkbox = document.getElementById(`Checkbox-${index}`)
+            const input = document.getElementById(`input-${index}`)
+            let obj = {
+                check: checkbox.checked,
+                content: input.value
+            }
+            data[index]=obj
+            setLocalStorage(key,data);
+            input.disabled = true;
+        }
+        //checkbox按鈕新增事件
+        function checkFN(event){
+            let data = getLocalStorage(key)
+            let index = event.target.getAttribute('data-check-index')
+            const checkbox = document.getElementById(`Checkbox-${index}`)
+            data[index].check = checkbox.checked
+            setLocalStorage(key,data)
+        }
+        
+        function setLocalStorage(key, value) {
+            localStorage.setItem(key, JSON.stringify(value))//放字串
+        }
+        function getLocalStorage(key) {
+            let data = JSON.parse(localStorage.getItem(key));
+            return data;
+            // return JSON.parse(localStorage.getItem(key));
+        }
+    </script>
+</body>
+
+</html>

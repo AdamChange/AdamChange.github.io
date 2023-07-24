@@ -11,6 +11,8 @@
         body {
             background-image: url('./Lovepik.jpg');
             background-size: cover;
+            /* background-position: center;
+            background-repeat: no-repeat; */
         }
 
         a {
@@ -97,19 +99,18 @@
         const listWrap = document.getElementById('todolist') //list列表
         //window.onload
         window.onload = function () {
-            listWrap.innerHTML = ''
             renderList();
-            let data = getLocalStorage(key)
-            console.log(data);
+            // let data = getLocalStorage(key)
+            // console.log(data);
         }
         //addEventListener
         addDOM1.addEventListener('keydown', function (event) {
             if (event.key == 'Enter') {
-                addList()
+                addList();
             }
         })
         addDOM2.addEventListener('click', function () {
-            addList()
+            addList();
         })
 
 
@@ -155,6 +156,8 @@
                 setLocalStorage(key, dataArray);
                 addDOM1.value = '';
                 renderList()
+            }else{
+                alert('你真的很厲害ㄝ')
             }
         }
         function addEvent() {
@@ -180,6 +183,7 @@
         function deleteFN(event) {
             let index = event.target.getAttribute('data-delete-index')
             let data = getLocalStorage(key)
+            console.log(index);
             data.splice(index, 1)
             setLocalStorage(key, data)
             renderList()

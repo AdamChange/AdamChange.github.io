@@ -22,7 +22,8 @@
         }
 
         .container {
-            background-color: rgba(240,255,255,0.75);
+            background-color: rgba(240, 255, 255, 0.75);
+            border-radius: 30px;
             margin-top: 50px;
         }
 
@@ -50,7 +51,7 @@
             <div class="listbox p-3" id="todolist">
 
                 <!-- 原始DIV -->
-                <div class="border d-flex p-4 align-items-center mb-4">
+                <!-- <div class="border d-flex p-4 align-items-center mb-4">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="Checkbox">
                         <label class="form-check-label" for="Checkbox"></label>
@@ -62,7 +63,7 @@
                     <button type="button" class="btn btn-warning me-1" id="edit-btn1">編輯</button>
                     <button type="button" class="btn btn-success me-1 d-none" id="edit-btn2">保存</button>
                     <button type="button" class="btn btn-danger me-1" id="edit-btn3">刪除</button>
-                </div>
+                </div> -->
 
                 <!-- 每個按鈕都有新增id${index} -->
                 <!-- <div class="border d-flex p-4 align-items-center mb-4">
@@ -113,7 +114,6 @@
             addList();
         })
 
-
         //FN
         function renderList() {
             listWrap.innerHTML = ''
@@ -127,7 +127,7 @@
                         <label class="form-check-label" for="Checkbox-${index}"></label>
                     </div>
                     <div class="input-group">
-                        <input type="text" class="in form-control me-4 border-secondary" aria-describedby="basic-addon1" disabled="true" id="input-${index}" value="${item.content}" data-input-index="${index}">
+                        <input type="text" class="listInput form-control me-4 border-secondary" aria-describedby="basic-addon1" disabled="true" id="input-${index}" value="${item.content}" data-input-index="${index}">
                     </div>
                     <button type="button" class="edit-btn btn btn-warning me-1" id="edit-btn${index}" data-edit-index="${index}">編輯</button>
                     <button type="button" class="save-btn btn btn-success me-1 d-none" id="save-btn${index}" data-save-index="${index}">保存</button>
@@ -156,10 +156,11 @@
                 setLocalStorage(key, dataArray);
                 addDOM1.value = '';
                 renderList()
-            }else{
+            } else {
                 alert('你真的很厲害ㄝ')
             }
         }
+        //對每個編輯、保存、刪除、checkBox新增監聽事件
         function addEvent() {
             const deBtnGroup = document.querySelectorAll('.del-btn') //搜尋每個符合CLASS名稱
             deBtnGroup.forEach(function (el) {
@@ -173,6 +174,14 @@
             saBtnGroup.forEach(function (el) {
                 el.addEventListener('click', saveFN)
             })
+            // const listInputGroup = document.querySelectorAll('.listInput')
+            // listInputGroup.forEach(function (el) {
+            //     el.addEventListener('keydown', function (event) {
+            //         if (event.key == 'Enter') {
+            //             saveFN();
+            //         }
+            //     })
+            // })
             const checkBtnGroup = document.querySelectorAll('.form-check-input')
             checkBtnGroup.forEach(function (el) {
                 el.addEventListener('change', checkFN)

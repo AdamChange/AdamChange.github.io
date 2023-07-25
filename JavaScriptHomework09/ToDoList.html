@@ -92,7 +92,7 @@
         crossorigin="anonymous"></script>
     <script>
         //宣告
-        let key = 'todolistdata';
+        const key = 'todolistdata';
         //DOM
         const addDOM1 = document.getElementById(`add-addon1`) //input
         const addDOM2 = document.getElementById('add-addon2') //新增
@@ -117,9 +117,9 @@
         //FN
         function renderList() {
             listWrap.innerHTML = ''
-            let data = getLocalStorage(key)
+            const data = getLocalStorage(key)
             let allStr = "";
-            if (data != null) {
+            if (data) {
                 data.forEach((item, index) => {
                     let str = `<div class="border border-2 border-secondary rounded-3 d-flex p-4 align-items-center mb-4">
                     <div class="form-check">
@@ -141,12 +141,12 @@
         }
         function addList() {
             if (addDOM1.value.trim() != '') {
+                let data = getLocalStorage(key)
                 let dataArray = [];
                 let obj = {
                     check: false,
                     content: addDOM1.value
                 }
-                let data = getLocalStorage(key)
                 if (data == null) {
                     dataArray.push(obj)
                 } else {
@@ -186,12 +186,11 @@
             checkBtnGroup.forEach(function (el) {
                 el.addEventListener('change', checkFN)
             })
-
         }
         // 刪除按鈕新增事件
         function deleteFN(event) {
             let index = event.target.getAttribute('data-delete-index')
-            let data = getLocalStorage(key)
+            const data = getLocalStorage(key)
             console.log(index);
             data.splice(index, 1)
             setLocalStorage(key, data)
@@ -207,7 +206,7 @@
         }
         //保存按鈕新增事件
         function saveFN(event) {
-            let data = getLocalStorage(key)
+            const data = getLocalStorage(key)
             let index = event.target.getAttribute('data-save-index')
             event.target.classList.add("d-none")
             const editBtn = document.getElementById(`edit-btn${index}`)

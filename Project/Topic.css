@@ -1,0 +1,241 @@
+ul {
+    padding-left: 5px;
+    margin: 10px 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style: none;
+}
+
+li div {
+    display: flex;
+}
+
+img {
+    width: 4rem;
+    height: 4rem;
+}
+
+h1 {
+    font-size: 18px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+.container{
+    --bs-gutter-x:0;
+    max-width: 100%;
+}
+aside p{
+    font-size: 14px;
+    margin-bottom: 10px;
+    line-height: 2em;
+}
+aside h1{
+    font-weight: bold;
+    margin: 10px 0;
+    font-size: 16px;
+
+}
+aside h2{
+    font-weight: bold;
+    font-size: 14px;
+}
+
+section {
+    min-width: 336px;
+    width: 100%;
+}
+
+textarea {
+    border: 0.0625rem solid #d8d9db;
+    border-radius: 8px;
+    min-height: 48px;
+    overflow-y: hidden
+}
+
+fieldset .box{
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 5px;
+}
+.box:checked{
+    border: 1px solid black;
+}
+
+fieldset button {
+    background-color: #da3743;
+    width: 100%;
+    height: 48px;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+    transition: all .3s ease-out;
+    margin: 10px 0;
+}
+
+fieldset button:hover {
+    background-color: #b8222d;
+
+}
+
+input {
+    border: none;
+}
+#confirm-title {
+    display: none;
+}
+#booking-img{
+    display: none;
+}
+#terms a {
+    font-size: 14px;
+    color: #da3743;
+}
+
+#terms p {
+    font-size: 14px;
+}
+
+#booking-datetime li,
+#booking-datetime i {
+    margin-right: 0.5rem;
+}
+
+#countdowwn-timer {
+    background-color: #fceeef;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+#loginbox-btn {
+    cursor: pointer;
+    border: none;
+    background-color: #fff;
+    color: #da3743;
+    padding: 0;
+    margin-bottom: 16px;
+}
+
+#loginbox-btn:hover {
+    text-decoration: underline;
+}
+.row{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-group input,
+.input-group button {
+    min-height: 48px;
+    border: 0.0625rem solid #d8d9db;
+}
+
+
+.input-group input:focus {
+    border: 0.0625rem solid #2d333f;
+    box-shadow: none;
+}
+
+.input-group button:hover {
+    border-radius: 8px;
+    border: 0.08rem solid #2d333f;
+}
+
+.form-check-input {
+    align-self: baseline;
+    flex-shrink: 0;
+    margin-right: 5px;
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.form-check-input:checked {
+    background-color: #f00;
+    border: #f00;
+}
+
+.form-check-input:focus {
+    box-shadow: none;
+    border: 0.0625rem solid #d8d9db;
+}
+.form-check-input:hover{
+    cursor: pointer;
+}
+.form-check-label:hover{
+    text-decoration: solid;
+    cursor: pointer;
+}
+
+[id$="error"] {
+    display: none;
+}
+.white{
+    display: none;
+}
+
+@media screen and (min-width:768px) {
+    #confirm-title {
+        display: block;
+    }
+    .flex-wrap .col-12:nth-of-type(2n+1){
+        padding-right: 20px;
+    }
+    
+    .container {
+        max-width: none;
+    }
+    .row{
+        padding: 0 2%;
+    }
+    
+}
+@media screen and (min-width:1024px) {
+    section{
+        flex: 1 0 1%;
+    }
+    .container{
+        max-width: 1024px;
+    }
+    .row{
+        flex-wrap: nowrap;
+    }
+    .white{
+        display: block;
+        flex: 0 0 20rem
+    }
+    #confirm-title {
+        display: block;
+    }
+
+    .container {
+        min-width: none;
+    }
+    #booking-img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    section .booking-restaurant-remind{
+        display: none;
+    }
+}
+@media screen and (min-width:1200px) {
+  
+}

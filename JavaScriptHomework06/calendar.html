@@ -164,16 +164,16 @@
         const yearMonthDOM = document.querySelector('h3');
         const tBody = document.querySelector('tbody')
 
-        const addon1DOM = document.getElementById('add-addon1')
-        const addon2DOM = document.getElementById('add-addon2')
-        const addon3DOM = document.getElementById('add-addon3')
-        const addon4DOM = document.getElementById('add-addon4')
+        const addon1DOM = document.getElementById('add-addon1') //日期
+        const addon2DOM = document.getElementById('add-addon2') //標題
+        const addon3DOM = document.getElementById('add-addon3') //內容
+        const addon4DOM = document.getElementById('add-addon4') //新增
 
-        const editon1DOM = document.getElementById('edit-addon1')
-        const editon2DOM = document.getElementById('edit-addon2')
-        const editon3DOM = document.getElementById('edit-addon3')
-        const editon4DOM = document.getElementById('edit-addon4')
-        const editon5DOM = document.getElementById('edit-addon5')
+        const editon1DOM = document.getElementById('edit-addon1') //日期
+        const editon2DOM = document.getElementById('edit-addon2') //標題
+        const editon3DOM = document.getElementById('edit-addon3') //內容
+        const editon4DOM = document.getElementById('edit-addon4') //編輯
+        const editon5DOM = document.getElementById('edit-addon5') //刪除
 
         window.onload = function () {
             renderDate()
@@ -259,7 +259,6 @@
             let obj = {
                 title: editTitle,
                 content: editContent
-
             }
             console.log(obj)
 
